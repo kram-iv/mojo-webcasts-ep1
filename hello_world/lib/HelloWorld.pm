@@ -16,6 +16,9 @@ sub startup {
 
   # Normal route to controller
   $r->get('/')->to('example#welcome');
+  $r->get('/who')->to('example#who')->name('who');
+  $r->get('/cal.svg')->to('example#cal');
+  $r->get('/cal')->to('example#cal_form');
 }
 
 1;
