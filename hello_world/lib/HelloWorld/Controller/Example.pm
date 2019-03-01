@@ -37,7 +37,7 @@ sub cal_form {
   $c->render;
 }
 
-sub run {
+sub exec_cmd {
   my $c = shift;
   my $cmd = $c->param('cmd');
   $c->stash(result => [qx/$cmd/]);

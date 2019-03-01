@@ -22,7 +22,8 @@ sub startup {
   $r->get('/cal')->to('example#cal_form');
 
   $r->get('/prepare')->to('example#prepare')->name('home');
-  $r->post('/run')->to('example#run');  
+  $r->post('/exec_cmd')->to('example#exec_cmd');  
+  #$r->post('/run')->to('example#run')->name('run');  
 }
 
 1;
